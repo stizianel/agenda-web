@@ -1,0 +1,13 @@
+<md-toolbar color="primary">
+    
+        <span routerLink="/">Agenda Web</span>
+        <span class="example-spacer"></span>
+        <button (click)="openLoginDialog()" md-button>Login</button>
+        <button md-button [mdMenuTriggerFor]="appMenu"><md-icon>menu</md-icon> Menu</button>
+        
+    </md-toolbar>
+    
+    <md-menu #appMenu="mdMenu">
+      <button md-menu-item routerLink="/customers"> Clienti </button>
+      <button md-menu-item routerLink="/login"> Login </button>
+    </md-menu>

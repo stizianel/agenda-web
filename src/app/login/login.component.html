@@ -1,0 +1,16 @@
+<form #f="ngForm" class="example-form">
+  <div>
+    <md-form-field class="example-full-width">
+      <input type="text" mdInput placeholder="Username" name="username" ngModel required>
+      <md-error>Obbligatorio</md-error>
+    </md-form-field>
+  </div>
+  <div>
+      <md-form-field class="example-full-width">
+        <input type="password" mdInput placeholder="Password" name="password" ngModel required>
+        <md-error>Obbligatorio</md-error>
+      </md-form-field>
+  </div>
+  <button md-raised-button (click)="getToken(f)">Get Token</button>
+  <button md-raised-button (click)="login(f)" md-dialog-close>Login</button>
+</form>

@@ -1,0 +1,31 @@
+<form class="example-form">
+    <md-form-field class="example-full-width">
+      <input mdInput placeholder="Denominazione" [value]="contact.Denominazione">
+    </md-form-field>
+    <md-form-field class="example-full-width">
+      <input mdInput placeholder="Nome" [value]="contact.Nome">
+    </md-form-field>
+    <md-form-field class="example-full-width">
+      <input mdInput placeholder="CFPiva" [value]="contact.CFPiva">
+    </md-form-field>
+    
+    
+    <md-expansion-panel>
+        <md-expansion-panel-header>
+          <md-panel-title>
+            Indirizzo
+          </md-panel-title>
+          <md-panel-description>
+            Residenza/Domicilio
+          </md-panel-description>
+        </md-expansion-panel-header>
+        
+        <md-form-field class="example-full-width">
+            <input mdInput placeholder="Indirizzo" [value]="contact.Indirizzo">
+          </md-form-field>
+        
+          <md-form-field class="example-full-width">
+              <input mdInput placeholder="Comune" [value]="contact.Comune">
+            </md-form-field>
+      </md-expansion-panel>
+  </form>
