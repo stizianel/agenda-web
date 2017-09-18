@@ -2,7 +2,7 @@
   <md-list dense >
     <md-list-item *ngFor="let anag of customers">
       {{ anag.Denominazione }} {{ anag.Indirizzo }} {{ anag.Comune}}
-      <md-icon mdListIcon [routerLink]="['/customers', anag.CFPiva]">folder</md-icon>
+      <md-icon mdListIcon [routerLink]="['/customers', anag.CFPiva]">account_circle</md-icon>
     </md-list-item>
   </md-list>
 </div>

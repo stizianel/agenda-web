@@ -29,7 +29,7 @@ export class CustomerDetailComponent implements OnInit {
         });
       });
   }
-  onContactRetrived(contact: string){
+  onContactRetrived(contact: string) {
     this.contact = JSON.parse(contact);
   }
 

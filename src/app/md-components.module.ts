@@ -9,7 +9,8 @@ import { MdCheckboxModule,
   MdInputModule,
   MdCardModule,
   MdListModule,
-  MdExpansionModule
+  MdExpansionModule,
+  MdRadioModule
 } from '@angular/material';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MdCheckboxModule,
     MdInputModule,
     MdCardModule,
     MdListModule,
-    MdExpansionModule
+    MdExpansionModule,
+    MdRadioModule
   ]
  })
 export class MdComponentsModule { }
