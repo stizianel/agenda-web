@@ -1,3 +1,4 @@
+import { environment } from '../environments/environment';
 import { AppError } from './app-error';
 import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
@@ -10,14 +11,16 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AgendaApiService {
   // private agendaUrl = 'http://2.234.133.94/WS_AgeDemo/AgeService.svc';
-  private agendaUrl = 'http://192.168.1.250/WS_AgeDemo/AgeService.svc';
+  private agendaUrl; // = 'http://192.168.1.250/WS_AgeDemo/AgeService.svc';
 
   private token: any;
   private datiLogin: any;
   private anagrafica: any;
   private currentContact: any = {};
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+      this.agendaUrl = environment.agendaUrl;
+  }
 
 
   getToken() {
