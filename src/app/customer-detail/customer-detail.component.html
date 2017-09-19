@@ -1,12 +1,12 @@
-<form class="example-form">
+<form #f="ngForm" class="example-form">
     <md-form-field class="example-full-width">
-      <input mdInput placeholder="Denominazione" [value]="contact.Denominazione">
+      <input mdInput placeholder="Denominazione" name="contact.Denominazione" [(ngModel)]="contact.Denominazione">
     </md-form-field>
     <md-form-field class="example-full-width">
-      <input mdInput placeholder="Nome" [value]="contact.Nome">
+      <input mdInput placeholder="Nome" [(ngModel)]="contact.Nome" name="contact.Nome">
     </md-form-field>
     <md-form-field class="example-full-width">
-      <input mdInput placeholder="CFPiva" [value]="contact.CFPiva">
+      <input mdInput placeholder="CFPiva" [(ngModel)]="contact.CFPiva" name="contact.CFPiva">
     </md-form-field>
     <md-accordion class="example-headers-align">
     <md-expansion-panel>
@@ -23,32 +23,44 @@
         <tr>
           <td>
             <md-form-field class="example-full-width">
-              <input mdInput placeholder="Telefono" [value]="contact.Telefono">
+              <input type="tel" mdInput placeholder="Telefono" [(ngModel)]="contact.Telefono" name="contact.Telefono">
           </md-form-field>
           </td>
           <td>
             <md-form-field class="example-full-width">
-              <input mdInput placeholder="Cellulare" [value]="contact.Cellulare">
+              <input mdInput placeholder="Cellulare" [(ngModel)]="contact.Cellulare" name="contact.Cellulare">
           </md-form-field>
           </td>
         </tr>
-      </table>
-      <table class="example-full-width"> 
         <tr>
           <td>
             <md-form-field class="example-full-width">
-              <input mdInput placeholder="Fax" [value]="contact.Fax">
+              <input mdInput placeholder="Fax" [(ngModel)]="contact.Fax" name="contact.Fax">
           </md-form-field>
           </td>
           <td>
             <md-form-field class="example-full-width">
-              <input mdInput placeholder="Email" [value]="contact.Mail">
+              <input type="email" mdInput placeholder="Email" [(ngModel)]="contact.Mail" name="contact.Mail">
+          </md-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>Comunicazione preferita</span>
+            <md-radio-group class="example-radio-group" [(ngModel)]="contact.CommPreferita" name="contact.CommPreferita">
+              <md-radio-button value="T">Telefono</md-radio-button>
+              <md-radio-button value="M">Mail</md-radio-button>
+            </md-radio-group>
+          </td>
+          <td>
+            <md-form-field class="example-full-width">
+              <input mdInput placeholder="Email alternativa" [(ngModel)]="contact.MailAlternativa" name="contact.MailAlternativa">
           </md-form-field>
           </td>
         </tr>
       </table>
     </md-expansion-panel>
-    
+    <!-- Sezione Indirizzo Residenza/Domicilio -->
     <md-expansion-panel>
       <md-expansion-panel-header>
         <md-panel-title>
@@ -59,83 +71,105 @@
           <md-icon>home</md-icon>
         </md-panel-description>
       </md-expansion-panel-header>
-        <table class="example-full-width"> 
-          <tr>
-            <td>
-              <md-form-field class="example-full-width">
-                <input mdInput placeholder="Comune" [value]="contact.Comune">
-            </md-form-field>
-            </td>
-            <td>
-              <md-form-field class="example-full-width">
-                <input mdInput placeholder="Cap">{{ contact.Cap || ''}}
-            </md-form-field>
-            </td>
-          </tr>
-        </table>
-        <md-form-field class="example-full-width">
-            <input mdInput placeholder="Indirizzo" [value]="contact.Indirizzo">
-        </md-form-field>
-        
-        <md-form-field class="example-full-width">
-            <input mdInput placeholder="Presso" [value]="contact.Presso">
-        </md-form-field>
-      </md-expansion-panel>
-
-      <md-expansion-panel>
-        <md-expansion-panel-header>
-          <md-panel-title>
-            Indirizzo
-          </md-panel-title>
-          <md-panel-description>
-            Corrispondenza
-            <md-icon>contact_mail</md-icon>
-          </md-panel-description>
-        </md-expansion-panel-header>
-        <table class="example-full-width">
-          <tr>
-            <td>
-              <md-form-field class="example-full-width">
-                <input mdInput placeholder="Comune" [value]="contact.ComuneC">
-              </md-form-field>
-            </td>
-            <td *ngIf="contact.CapC">
-              <md-form-field class="example-full-width">
-                <input mdInput placeholder="CapC" [value]="contact.CapC">
-              </md-form-field>
-            </td>
-          </tr>
-        </table>
-        <md-form-field class="example-full-width">
-            <input mdInput placeholder="Indirizzo" [value]="contact.IndirizzoC">
-        </md-form-field>
-        <md-form-field class="example-full-width">
-            <input mdInput placeholder="Presso" [value]="contact.PressoC">
-        </md-form-field>
-      </md-expansion-panel>
-      <md-expansion-panel *ngIf="contact.Persona == 'F'">
-          <md-expansion-panel-header>
-            <md-panel-title>
-              Dati Personali
-            </md-panel-title>
-            <md-panel-description>
-              Nascita, Sesso etc.
-              <md-icon>account_circle</md-icon>
-            </md-panel-description>
-          </md-expansion-panel-header>
-          <md-form-field>
-            <input type="date" mdInput placeholder="data di nascita" [value]="contact.DataNascita">
+      <table class="example-full-width"> 
+        <tr>
+          <td>
+            <md-form-field class="example-full-width">
+              <input mdInput placeholder="Comune" [(ngModel)]="contact.Comune" name="contact.Comune">
           </md-form-field>
-          <div>
-            <span>Sesso</span>
+          </td>
+          <td>
+            <md-form-field class="example-full-width">
+              <input mdInput placeholder="Cap" [(ngModel)]="contact.Cap" name="contact.Cap">
+          </md-form-field>
+          </td>
+        </tr>
+      </table>
+      <md-form-field class="example-full-width">
+          <input mdInput placeholder="Indirizzo" [(ngModel)]="contact.Indirizzo" name="contact.Indirizzo">
+      </md-form-field>
+      
+      <md-form-field class="example-full-width">
+          <input mdInput placeholder="Presso" [(ngModel)]="contact.Presso" name="contact.Presso">
+      </md-form-field>
+    </md-expansion-panel>
+<!-- Sezione Indirizzo di Corrispondenza -->
+    <md-expansion-panel>
+      <md-expansion-panel-header>
+        <md-panel-title>
+          Indirizzo
+        </md-panel-title>
+        <md-panel-description>
+          Corrispondenza
+          <md-icon>contact_mail</md-icon>
+        </md-panel-description>
+      </md-expansion-panel-header>
+      <table class="example-full-width">
+        <tr>
+          <td>
+            <md-form-field class="example-full-width">
+              <input mdInput placeholder="Comune" [value]="contact.ComuneC">
+            </md-form-field>
+          </td>
+          <td *ngIf="contact.CapC">
+            <md-form-field class="example-full-width">
+              <input mdInput placeholder="CapC" [value]="contact.CapC">
+            </md-form-field>
+          </td>
+        </tr>
+      </table>
+      <md-form-field class="example-full-width">
+          <input mdInput placeholder="Indirizzo" [value]="contact.IndirizzoC">
+      </md-form-field>
+      <md-form-field class="example-full-width">
+          <input mdInput placeholder="Presso" [value]="contact.PressoC">
+      </md-form-field>
+    </md-expansion-panel>
+    <!-- Sezione Dati Personali -->
+    <md-expansion-panel *ngIf="contact.Persona == 'F'">
+      <md-expansion-panel-header>
+        <md-panel-title>
+          Dati Personali
+        </md-panel-title>
+        <md-panel-description>
+          Nascita, Sesso etc.
+          <md-icon>account_circle</md-icon>
+        </md-panel-description>
+      </md-expansion-panel-header>
+      <table>
+        <tr>
+          <td><md-form-field>
+            <input type="date" mdInput placeholder="data di nascita" [(ngModel)]="contact.DataNascita" name="contact.DataNascita">
+          </md-form-field></td>
+          <td><span>Sesso</span>
             <span>
-              <md-radio-group>
-                <md-radio-button class="example-margin" value="M">Maschio</md-radio-button>
-                <md-radio-button class="example-margin" value="F">Femmina</md-radio-button>
-              </md-radio-group>
-            </span>
-          </div>
-      </md-expansion-panel>
-    </md-accordion>
+                <md-radio-group [(ngModel)]="contact.Sesso" name="contact.Sesso">
+                  <md-radio-button class="example-margin" value="M">Maschio</md-radio-button>
+                  <md-radio-button class="example-margin" value="F">Femmina</md-radio-button>
+                </md-radio-group>
+            </span></td>
+          <td></td>
+        </tr>
+      </table>
+    </md-expansion-panel>
+    <!-- Sezione consensi -->
+    <md-expansion-panel>
+      <md-expansion-panel-header>
+        <md-panel-title>
+          Consensi
+        </md-panel-title>
+        <md-panel-description>
+          Privacy, Promozioni
+        </md-panel-description>
+      </md-expansion-panel-header>
+      <section class="example-section">
+        <md-radio-group>
+          <md-radio-button class="example-margin" value="start">Dati Personali</md-radio-button>
+          <md-radio-button class="example-margin" value="end">End</md-radio-button>
+        </md-radio-group>
+      </section>
+      
+    </md-expansion-panel>
+  </md-accordion>
 
   </form>
