@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  agendaUrl: 'http://srv2012/WS_AgeDemo/AgeService.svc'
+  agendaUrl: 'https://srv2012/WS_AgeDemo/AgeService.svc'
 };
